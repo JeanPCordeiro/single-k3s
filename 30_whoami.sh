@@ -2,7 +2,7 @@
 set -o xtrace
 
 
-Aexport KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 export DOMAIN=les-cordeiro.fr
 export EMAIL=jeanpierre.cordeiro@gmail.com
 
