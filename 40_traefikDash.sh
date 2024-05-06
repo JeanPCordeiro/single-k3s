@@ -10,6 +10,5 @@ cat basic-auth-middleware.yaml | envsubst | kubectl apply -f -
 
 cat traefik-dashboard-service.yaml | envsubst | kubectl apply -f -
 cat traefik-dashboard-ingress.yaml | envsubst | kubectl apply -f -
-#cat traefik-ingressroute.yaml | envsubst | kubectl apply -f -
 
 watch kubectl get pods -A

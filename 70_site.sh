@@ -12,5 +12,7 @@ export DOMAIN=les-cordeiro.fr
 # Install Wordpress
 #
 kubectl create ns ${NAMESITE}
-cat wordpress.yaml | envsubst | kubectl apply -f - -n ${NAMESITE}
+
+kubectl apply -n ${NAMESITE} -k ./
+cat wordpress-ingress.yaml | envsubst | kubectl apply -f - -n ${NAMESITE}
 watch kubectl get pods -A

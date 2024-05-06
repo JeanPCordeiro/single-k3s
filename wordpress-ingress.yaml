@@ -1,25 +1,28 @@
+#
+# WP Ingress
+#
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: whoami-tls-ingress
+  name: wordpress-ingress
+  namespace: ${NAMESITE}
   annotations:
-#kubernetes.io/ingress.class: traefik
     spec.ingressClassName: traefik
     cert-manager.io/cluster-issuer: letsencrypt-prod
     traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
 spec:
   rules:
-    - host: whoami.sys.${DOMAIN}
+    - host: ${DOMAIN}
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: whoami
+                name: wordpress-service
                 port:
-                  number: 5678
+                  number: 80
   tls:
-    - secretName: whoami-tls
+    - secretName: site-wordpress-tls
       hosts:
-        - whoami.sys.${DOMAIN}
+        - ${DOMAIN}
